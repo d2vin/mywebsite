@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
       <div className="p-2 w-1/2 flex">
         <Link href={''}>
           <a
-            className="mx-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
+            className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
             href="#"
           >
             Home
@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
         </Link>
         <Link href={''}>
           <a
-            className="mx-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
+            className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
             href="#"
           >
             Works
@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
         </Link>
         <Link href={''}>
           <a
-            className="mx-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
+            className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
             href="#"
           >
             About
@@ -34,18 +34,23 @@ const Navbar: React.FC = () => {
         </Link>
         <Link href={''}>
           <a
-            className="mx-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
+            className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
             href="#"
           >
-            About
+            Contact
           </a>
         </Link>
       </div>
       <button
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        className="bg-black"
+        className="flex justify-center items-center p-2 mx-2"
       >
-        <Image src={'/sunset.png'} width={20} height={20} alt="sunset icon" />
+        <Image
+          src={theme === 'dark' ? '/sun.png' : '/moon.png'}
+          width={32}
+          height={32}
+          alt="sunset icon"
+        />
       </button>
     </nav>
   );
