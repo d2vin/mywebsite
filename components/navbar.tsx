@@ -8,13 +8,10 @@ const Navbar: React.FC = () => {
   return (
     <nav className="drop-shadow-xl rounded-2xl flex items-center justify-between w-full border border-black dark:border-white dark:text-white text-black">
       <div className="p-2 w-1/2 flex">
-        <Link href={''}>
-          <a
-            className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
-            href="#"
-          >
+        <Link href={'/'}>
+          <p className="p-2 rounded-xl hover:dark:text-black hover:bg-slate-200">
             Home
-          </a>
+          </p>
         </Link>
         <Link href={''}>
           <a
@@ -32,10 +29,10 @@ const Navbar: React.FC = () => {
             About
           </a>
         </Link>
-        <Link href={''}>
+        <Link href={'/contact'}>
           <a
             className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
-            href="#"
+            href="/contact"
           >
             Contact
           </a>

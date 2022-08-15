@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Masthead from '../components/masthead';
 import Navbar from '../components/navbar';
+import ContactMe from '../components/contact-me';
+import Layout from '../components/layout';
 
 const Home: NextPage = () => {
   return (
@@ -10,10 +12,15 @@ const Home: NextPage = () => {
       <Head>
         <title>Home</title>
       </Head>
-      <div className="container mx-auto max-w-2xl pt-8">
-        <Navbar />
+      <Layout>
         <Masthead />
-      </div>
+        <h1 className="text-4xl">Featured Posts</h1>
+        <a href="#">
+          <div className="w-full border-b border-gray-200 dark:border-gray-700 py-3 transform hover:scale-[1.01] transition-all">
+            hello
+          </div>
+        </a>
+      </Layout>
     </>
   );
 };
