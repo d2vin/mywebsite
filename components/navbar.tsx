@@ -6,36 +6,20 @@ import { useTheme } from 'next-themes';
 const Navbar: React.FC = () => {
   const { theme, setTheme } = useTheme();
   return (
-    <nav className="drop-shadow-xl rounded-2xl flex items-center justify-between w-full border border-black dark:border-white dark:text-white text-black">
+    <nav className="drop-shadow-xl rounded-2xl flex items-center justify-between border border-black dark:border-white dark:text-white text-black mx-4 md:mx-0 transition-all">
       <div className="p-2 w-1/2 flex">
         <Link href={'/'}>
           <p className="p-2 rounded-xl hover:dark:text-black hover:bg-slate-200">
             Home
           </p>
         </Link>
-        <Link href={''}>
-          <a
-            className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
-            href="#"
-          >
-            Works
-          </a>
-        </Link>
-        <Link href={''}>
-          <a
-            className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
-            href="#"
-          >
-            About
-          </a>
-        </Link>
-        <Link href={'/contact'}>
-          <a
-            className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
-            href="/contact"
-          >
+        <Link
+          href={'/contact'}
+          className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
+        >
+          <p className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200">
             Contact
-          </a>
+          </p>
         </Link>
       </div>
       <button

@@ -91,10 +91,10 @@ const ContactMe: React.FC = () => {
           )}
           {status.submitted ? (
             <div
-              className="text-white text-xl font-bold px-4 py-3 rounded relative"
+              className="text-white text-xl font-bold px-4 py-3 rounded relative text-center"
               role="alert"
             >
-              Your message has been sent. Welcome to the GBC.
+              Thanks for reaching out!
             </div>
           ) : (
             <>
@@ -118,7 +118,7 @@ const ContactMe: React.FC = () => {
                 placeholder="Your E-mail"
                 className="bg-black text0white outline-none border-2 border-white rounded-3xl px-8 py-2"
                 onChange={handleOnChange}
-                value={inputs.companyEmail}
+                value={inputs.yourEmail}
               />
               <textarea
                 name="message"
