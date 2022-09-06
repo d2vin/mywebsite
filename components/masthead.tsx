@@ -21,7 +21,15 @@ const Masthead = () => {
           >
             Strategic Design & Management
           </a>{' '}
-          at the Parsons School of Design
+          at the{' '}
+          <a
+            href="https://www.newschool.edu/parsons/"
+            rel="noreferrer"
+            target="_blank"
+            className="hover:text-red-500"
+          >
+            Parsons School of Design
+          </a>
         </p>
       </div>
       <div className="w-[80px] sm:w-[176px] relative mb-0 sm:mb-0 mr-auto pt-8 pl-4 pb-4 pr-4 md:pr-0">

@@ -1,7 +1,6 @@
 import React from 'react';
 import ContactMe from '../components/contact-me';
 import { NextPage } from 'next';
-import Navbar from '../components/navbar';
 import Layout from '../components/layout';
 import Head from 'next/head';
 

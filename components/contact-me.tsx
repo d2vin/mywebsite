@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import Image from 'next/image';
 import axios from 'axios';
 
 const ContactMe: React.FC = () => {
@@ -11,7 +10,7 @@ const ContactMe: React.FC = () => {
 
   const [inputs, setInputs] = useState({
     fullName: '',
-    companyEmail: '',
+    email: '',
     message: '',
   });
 
@@ -40,7 +39,7 @@ const ContactMe: React.FC = () => {
       });
       setInputs({
         fullName: '',
-        companyEmail: '',
+        email: '',
         message: '',
       });
     } else {
@@ -105,7 +104,7 @@ const ContactMe: React.FC = () => {
                 maxLength={128}
                 type="text"
                 placeholder="Your name"
-                className="bg-black text-white outline-none border-2 border-white rounded-3xl px-8 py-2"
+                className="bg-neutral-100 text-black dark:bg-black dark:text-white outline-none border-2 border-black dark:border-white rounded-3xl px-8 py-2"
                 onChange={handleOnChange}
                 value={inputs.fullName}
               />
@@ -116,9 +115,9 @@ const ContactMe: React.FC = () => {
                 required
                 maxLength={128}
                 placeholder="Your E-mail"
-                className="bg-black text0white outline-none border-2 border-white rounded-3xl px-8 py-2"
+                className="bg-neutral-100 text-black dark:bg-black dark:text-white outline-none border-2 border-black dark:border-white rounded-3xl px-8 py-2"
                 onChange={handleOnChange}
-                value={inputs.yourEmail}
+                value={inputs.email}
               />
               <textarea
                 name="message"
@@ -126,14 +125,14 @@ const ContactMe: React.FC = () => {
                 required
                 maxLength={1048576}
                 placeholder="Additional information"
-                className="bg-black text-white outline-none border-2 border-white rounded-3xl px-8 py-6 min-h-[16em]"
+                className="bg-neutral-100 dark:bg-black text-white dark:text-white outline-none border-2 dark:border-white border-black rounded-3xl px-8 py-6 min-h-[16em]"
                 onChange={handleOnChange}
                 value={inputs.message}
               ></textarea>
               <div className="text-center mt-10">
                 <button
                   type="submit"
-                  className="bg-white text-black rounded-3xl px-8 py-2"
+                  className="bg-black text-white dark:bg-white dark:text-black rounded-3xl px-8 py-2"
                 >
                   {!status.submitting
                     ? !status.submitted

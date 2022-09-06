@@ -1,26 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import NavbarLink from './navbar-link';
 import { useTheme } from 'next-themes';
 
 const Navbar: React.FC = () => {
   const { theme, setTheme } = useTheme();
   return (
-    <nav className="drop-shadow-xl rounded-2xl flex items-center justify-between border border-black dark:border-white dark:text-white text-black mx-4 md:mx-0 transition-all">
+    <nav className="rounded-2xl flex items-center justify-between border border-black dark:border-white dark:text-white text-black mx-4 md:mx-0 transition-all">
       <div className="p-2 w-1/2 flex">
-        <Link href={'/'}>
-          <p className="p-2 rounded-xl hover:dark:text-black hover:bg-slate-200">
-            Home
-          </p>
-        </Link>
-        <Link
-          href={'/contact'}
-          className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200"
-        >
-          <p className="mx-2 p-2 rounded-xl hover:dark:text-black hover:bg-slate-200">
-            Contact
-          </p>
-        </Link>
+        <NavbarLink linkText={'Home'} href={'/'} />
+        <NavbarLink linkText={'Contact'} href={'/contact'} />
+      <NavbarLink linkText={'Works'} href={'/works'} />
       </div>
       <button
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
