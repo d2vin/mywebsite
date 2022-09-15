@@ -94,6 +94,8 @@ const ContactMe: React.FC = () => {
               role="alert"
             >
               Thanks for reaching out!
+              <br />
+              I&apos;ll be sure to get back to you shortly.
             </div>
           ) : (
             <>

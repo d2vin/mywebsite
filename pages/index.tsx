@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Masthead from '../components/masthead';
 import Layout from '../components/layout';
-import Projects from '../components/projects';
+import Works from '../components/experience';
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       </Head>
       <Layout>
         <Masthead />
-        <Projects />
+        <Works />
       </Layout>
     </>
   );
