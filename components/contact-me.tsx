@@ -131,7 +131,7 @@ const ContactMe: React.FC = () => {
                 onChange={handleOnChange}
                 value={inputs.message}
               ></textarea>
-              <div className="text-center mt-10">
+              <div className="text-center mt-4">
                 <button
                   type="submit"
                   className="bg-black text-white dark:bg-white dark:text-black rounded-3xl px-8 py-2"

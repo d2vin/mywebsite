@@ -10,10 +10,12 @@ const Home: NextPage = () => {
       <Head>
         <title>Home</title>
       </Head>
-      <Layout>
-        <Masthead />
-        <Works />
-      </Layout>
+      <div className="h-screen mb-20">
+        <Layout>
+          <Masthead />
+          <Works />
+        </Layout>
+      </div>
     </>
   );
 };

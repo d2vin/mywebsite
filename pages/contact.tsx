@@ -10,9 +10,11 @@ const Contact: NextPage = () => {
       <Head>
         <title>Contact</title>
       </Head>
-      <Layout>
-        <ContactMe />
-      </Layout>
+      <div className="h-screen mb-20">
+        <Layout>
+          <ContactMe />
+        </Layout>
+      </div>
     </>
   );
 };
