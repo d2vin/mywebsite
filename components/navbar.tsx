@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
         >
           <Image
             src={
-              theme! ? (theme === 'dark' ? '/sun.png' : '/moon.png') : '/sun.png'
+              theme ? (theme === 'dark' ? '/sun.png' : '/moon.png') : '/sun.png'
             }
             width={32}
             height={32}
