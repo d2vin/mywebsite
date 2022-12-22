@@ -26,9 +26,7 @@ const Navbar: React.FC = () => {
           className="flex justify-center items-center p-2 mx-2"
         >
           <Image
-            src={
-              theme ? (theme === 'dark' ? '/sun.png' : '/moon.png') : '/sun.png'
-            }
+            src={theme === 'dark' ? '/moon.png' : '/sun.png'}
             width={32}
             height={32}
             alt="sunset icon"
