@@ -12,23 +12,36 @@ const Navbar: React.FC = () => {
         <NavbarLink linkText={'Posts'} href={'/posts'} />
         <NavbarLink linkText={'Contact'} href={'/contact'} />
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center justify-between ">
         <a
           href="https://www.linkedin.com/in/devin-minnihan-6225a6176/"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center"
+          className="flex items-center pr-1"
         >
           <Image src="/linkedin.png" alt="linkedin" width={30} height={30} />
         </a>
+        <a
+          href="https://github.com/d2vin"
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center pr-1"
+        >
+          <Image
+            src={theme === 'dark' ? '/github.png' : '/github-dark.png'}
+            alt="github"
+            width={30}
+            height={30}
+          />
+        </a>
         <button
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="flex justify-center items-center p-2 mx-2"
+          className="flex justify-center items-center pr-2 mr-2"
         >
           <Image
             src={theme === 'dark' ? '/sun.png' : '/moon.png'}
-            width={32}
-            height={32}
+            width={30}
+            height={30}
             alt="sunset icon"
           />
         </button>
