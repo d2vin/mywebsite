@@ -12,20 +12,12 @@ const Navbar: React.FC = () => {
         <NavbarLink linkText={'Posts'} href={'/posts'} />
         <NavbarLink linkText={'Contact'} href={'/contact'} />
       </div>
-      <div className="flex items-center justify-between ">
-        <a
-          href="https://www.linkedin.com/in/devin-minnihan-6225a6176/"
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center pr-1"
-        >
-          <Image src="/linkedin.png" alt="linkedin" width={30} height={30} />
-        </a>
+      <div className="flex items-center justify-end space-x-2">
         <a
           href="https://github.com/d2vin"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center pr-1"
+          className="flex items-center"
         >
           <Image
             src={theme === 'dark' ? '/github.png' : '/github-dark.png'}
@@ -36,7 +28,7 @@ const Navbar: React.FC = () => {
         </a>
         <button
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="flex justify-center items-center pr-2 mr-2"
+          className="flex justify-center items-center"
         >
           <Image
             src={theme === 'dark' ? '/sun.png' : '/moon.png'}
@@ -45,6 +37,14 @@ const Navbar: React.FC = () => {
             alt="sunset icon"
           />
         </button>
+        <a
+          href="https://www.linkedin.com/in/devin-minnihan-6225a6176/"
+          target="_blank"
+          rel="noreferrer"
+          className="flex justify-center items-center pr-4"
+        >
+          <Image src="/linkedin.png" alt="linkedin" width={30} height={30} />
+        </a>
       </div>
     </nav>
   );
