@@ -24,7 +24,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" enableSystem={true}>
       <div id="blob"></div>
-      <div className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+      <div
+        className={`${
+          theme === 'dark'
+            ? 'text-white'
+            : theme === 'light'
+            ? 'text-black'
+            : 'text-white'
+        }`}
+      >
         <Component {...pageProps} />
       </div>
     </ThemeProvider>
