@@ -14,28 +14,28 @@ const Experience = () => {
       />
       <ExperienceLink
         company={'Lectrium'}
-        position={'Software Development Intern'}
+        position={'Frontend Software Developer'}
         location={'New York'}
         year={'2022'}
         link={'https://lectrium.io'}
       />
       <ExperienceLink
         company={'C2 Ventures'}
-        position={'Spring & Summer Intern'}
+        position={'Spring & Summer Research Intern'}
         location={'Remote'}
         year={'2022'}
         link={'https://www.c2ventures.co/'}
       />
       <ExperienceLink
         company={'Global Blockchain Convergence'}
-        position={'Web Development Intern'}
+        position={'Web Developer'}
         location={'Remote'}
         year={'2022'}
         link={'https://gbcio.vercel.app'}
       />
       <ExperienceLink
         company={'Tribeca Early Stage Partners'}
-        position={'Marketing Intern'}
+        position={'Research and Marketing Intern'}
         location={'New York'}
         year={'2021'}
         link={'https://www.tribecaesp.com/'}

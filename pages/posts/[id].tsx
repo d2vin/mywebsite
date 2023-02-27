@@ -55,13 +55,8 @@ export default function Post({ postData }: any) {
               {postData.inspo}
             </a>
           </span>{' '}
-          on{' '}
-          <span className="font-bold cursor-pointer hover:text-red-500">
-            <a target="_blank" rel="noreferrer" href={postData.github}>
-              Github
-            </a>
-          </span>
-          . You can find a link to the finished product{' '}
+          and their parallax design trends. You can find a link to the finished
+          product{' '}
           <span className="font-bold cursor-pointer hover:text-red-500">
             <a target="_blank" href={postData.link} rel="noreferrer">
               here

@@ -13,6 +13,17 @@ const Navbar: React.FC = () => {
         <NavbarLink linkText={'Contact'} href={'/contact'} />
       </div>
       <div className="flex items-center justify-end space-x-2">
+        <button
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="flex justify-center items-center"
+        >
+          <Image
+            src={theme === 'dark' ? '/sun.png' : '/moon.png'}
+            width={30}
+            height={30}
+            alt="sunset icon"
+          />
+        </button>
         <a
           href="https://github.com/d2vin"
           target="_blank"
@@ -26,17 +37,6 @@ const Navbar: React.FC = () => {
             height={30}
           />
         </a>
-        <button
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="flex justify-center items-center"
-        >
-          <Image
-            src={theme === 'dark' ? '/sun.png' : '/moon.png'}
-            width={30}
-            height={30}
-            alt="sunset icon"
-          />
-        </button>
         <a
           href="https://www.linkedin.com/in/devin-minnihan-6225a6176/"
           target="_blank"
