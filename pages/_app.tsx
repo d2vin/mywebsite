@@ -5,25 +5,25 @@ import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { theme, setTheme } = useTheme();
-  useEffect(() => {
-    const blob = document.getElementById('blob');
+  // useEffect(() => {
+  //   const blob = document.getElementById('blob');
 
-    document.body.onpointermove = (event) => {
-      const { clientX, clientY } = event;
+  //   document.body.onpointermove = (event) => {
+  //     const { clientX, clientY } = event;
 
-      blob?.animate(
-        {
-          left: `${clientX}px`,
-          top: `${clientY}px`,
-        },
-        { duration: 3000, fill: 'forwards' }
-      );
-    };
-  }, []);
+  //     blob?.animate(
+  //       {
+  //         left: `${clientX}px`,
+  //         top: `${clientY}px`,
+  //       },
+  //       { duration: 3000, fill: 'forwards' }
+  //     );
+  //   };
+  // }, []);
 
   return (
     <ThemeProvider attribute="class" enableSystem={true}>
-      <div id="blob"></div>
+      {/* <div id="blob" className="collapse sm:visible"></div> */}
       <div className="dark:text-white text-black">
         <Component {...pageProps} />
       </div>
