@@ -14,21 +14,11 @@ const Navbar: React.FC = () => {
       </div>
       <div className="flex items-center justify-end space-x-2">
         <button
-          onClick={() =>
-            setTheme(
-              theme === 'system' ? 'dark' : theme === 'dark' ? 'light' : 'dark'
-            )
-          }
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           className="flex justify-center items-center"
         >
           <Image
-            src={
-              theme === 'system'
-                ? '/sun.png'
-                : theme === 'light'
-                ? '/moon.png'
-                : '/sun.png'
-            }
+            src={theme === 'light' ? '/moon.png' : '/sun.png'}
             width={30}
             height={30}
             alt="sunset icon"
@@ -41,13 +31,7 @@ const Navbar: React.FC = () => {
           className="flex items-center"
         >
           <Image
-            src={
-              theme === 'system'
-                ? '/github.png'
-                : theme === 'light'
-                ? '/github-dark.png'
-                : '/github.png'
-            }
+            src={theme === 'light' ? '/github-dark.png' : '/github.png'}
             alt="github"
             width={30}
             height={30}
