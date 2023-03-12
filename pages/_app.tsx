@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   // }, []);
 
   return (
-    <ThemeProvider attribute="class" enableSystem={false}>
+    <ThemeProvider attribute="class" enableSystem={false} defaultTheme={'dark'}>
       {/* <div id="blob" className="collapse sm:visible"></div> */}
       <div className="dark:text-white text-black">
         <Component {...pageProps} />
