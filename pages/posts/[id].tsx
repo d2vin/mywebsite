@@ -49,14 +49,18 @@ export default function Post({ postData }: any) {
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
         <p className="text-lg font-medium leading-relaxed mt-0 mb-4">
-          The design of this website took inspiration from{' '}
-          <span className="font-bold cursor-pointer hover:text-red-500">
-            <a target="_blank" href={postData.ref} rel="noreferrer">
-              {postData.inspo}
-            </a>
-          </span>{' '}
-          and their parallax design trends. You can find a link to the finished
-          product{' '}
+          {postData.inspo !== 'false' && (
+            <>
+              <p> The design of this website took inspiration from </p>
+              <span className="font-bold cursor-pointer hover:text-red-500">
+                <a target="_blank" href={postData.ref} rel="noreferrer">
+                  {postData.inspo}
+                </a>
+              </span>{' '}
+              <p>and their parallax design trends.</p>
+            </>
+          )}
+          You can find a link to site{' '}
           <span className="font-bold cursor-pointer hover:text-red-500">
             <a target="_blank" href={postData.link} rel="noreferrer">
               here
