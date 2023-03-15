@@ -7,7 +7,7 @@ const Experience = () => {
       <h1 className="pt-8 text-4xl pl-4 md:pl-0 transition-all">Experience</h1>
       <ExperienceLink
         company={'Letterhead'}
-        position={'QA Engineer'}
+        position={'Software Support Engineer'}
         location={'New York'}
         year={'2022'}
         link={'https://www.tryletterhead.com/'}
