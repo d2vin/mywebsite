@@ -6,6 +6,13 @@ const Experience = () => {
     <div className="pb-40">
       <h1 className="pt-8 text-4xl pl-4 md:pl-0 transition-all">Experience</h1>
       <ExperienceLink
+        company={'AllDealershipJobs.com'}
+        position={'Co-Founder'}
+        location={'New York'}
+        year={'2023'}
+        link={'https://www.alldealershipjobs.com/'}
+      />
+      <ExperienceLink
         company={'Letterhead'}
         position={'Software Support Engineer'}
         location={'New York'}

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import NavbarLink from './navbar-link';
 import { useTheme } from 'next-themes';
+import { AiFillGithub } from 'react-icons/ai'
 
 const Navbar: React.FC = () => {
   const { theme, setTheme } = useTheme();
@@ -30,11 +31,9 @@ const Navbar: React.FC = () => {
           rel="noreferrer"
           className="flex items-center"
         >
-          <Image
-            src={theme === 'light' ? '/github-dark.png' : '/github.png'}
-            alt="github"
-            width={30}
-            height={30}
+          <AiFillGithub
+            className={`${theme === 'light'} ? 'text-black' : 'text-white'`}
+            size={26}
           />
         </a>
         <a
