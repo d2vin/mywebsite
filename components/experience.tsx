@@ -21,7 +21,7 @@ const Experience = () => {
       />
       <ExperienceLink
         company={'Productive'}
-        position={'Capstone Project'}
+        position={'Thesis Project'}
         location={'New York'}
         year={'2022'}
         link={'https://www.productive.vote/home'}
