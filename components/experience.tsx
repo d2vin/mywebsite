@@ -42,7 +42,7 @@ const Experience = () => {
       />
       <ExperienceLink
         company={'Global Blockchain Convergence'}
-        position={'Web Developer'}
+        position={'Software Developer (Contract)'}
         location={'Remote'}
         year={'2022'}
         link={'https://gbcio.vercel.app'}
