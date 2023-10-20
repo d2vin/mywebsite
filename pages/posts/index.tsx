@@ -29,7 +29,7 @@ export default function Index({ allPostsData }: any) {
                   <div className="cursor-pointer w-7/8 border-b border-black dark:border-gray-200 py-3 transform hover:scale-[1.01] transition-all">
                     <div className="flex justify-between">
                       <h1>{title}</h1>
-                      <div>{date}</div>
+                      <div className="hidden lg:block">{date}</div>
                     </div>
                   </div>
                 </Link>
