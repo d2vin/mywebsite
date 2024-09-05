@@ -14,7 +14,7 @@ const Experience = () => {
       />
       <ExperienceLink
         company={'Letterhead'}
-        position={'Software Support Engineer'}
+        position={'Software Engineer'}
         location={'New York'}
         year={'2022'}
         link={'https://www.tryletterhead.com/'}
