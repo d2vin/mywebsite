@@ -9,49 +9,56 @@ const Experience = () => {
         company={'Letterhead'}
         position={'Software Engineer'}
         location={'New York'}
-        year={'2022'}
+        yearFrom={'2022'}
+        yearTo={'Present'}
         link={'https://www.tryletterhead.com/'}
       />
       <ExperienceLink
         company={'AllDealershipJobs.com'}
         position={'Side-Project'}
         location={'New York'}
-        year={'2023'}
+        yearFrom={'2023'}
+        yearTo={'Present'}
         link={'https://www.alldealershipjobs.com/'}
       />
       <ExperienceLink
         company={'Productive'}
         position={'Thesis Project'}
         location={'New York'}
-        year={'2022'}
+        yearFrom={'2022'}
+        yearTo={'Present'}
         link={'https://www.productive.vote/home'}
       />
       <ExperienceLink
         company={'Lectrium'}
         position={'Frontend Software Developer'}
         location={'New York'}
-        year={'2022'}
+        yearFrom={'2022'}
+        yearTo={'2023'}
         link={'https://lectrium.io'}
       />
       <ExperienceLink
         company={'C2 Ventures'}
         position={'Spring & Summer Research Intern'}
         location={'Remote'}
-        year={'2022'}
+        yearFrom={'2022'}
+        yearTo={'2023'}
         link={'https://www.c2ventures.co/'}
       />
       <ExperienceLink
         company={'Global Blockchain Convergence'}
         position={'Software Developer (Contract)'}
         location={'Remote'}
-        year={'2022'}
+        yearFrom={'2022'}
+        yearTo={'2023'}
         link={'https://gbcio.vercel.app'}
       />
       <ExperienceLink
         company={'Tribeca Early Stage Partners'}
         position={'Research and Marketing Intern'}
         location={'New York'}
-        year={'2021'}
+        yearFrom={'2021'}
+        yearTo={'2022'}
         link={'https://www.tribecaesp.com/'}
       />
     </div>

@@ -4,7 +4,8 @@ interface ExperienceLinkProps {
   company: string;
   position: string;
   location: string;
-  year: string;
+  yearFrom: string;
+  yearTo?: string; // Optional: can be 'Present' or a year
   link: string;
 }
 
@@ -12,7 +13,8 @@ const ExperienceLink: React.FC<ExperienceLinkProps> = ({
   company,
   position,
   location,
-  year,
+  yearFrom,
+  yearTo = 'Present', // Default to 'Present' if not provided
   link,
 }) => {
   return (
@@ -25,7 +27,9 @@ const ExperienceLink: React.FC<ExperienceLinkProps> = ({
           </div>
           <div>
             <h1 className="flex justify-end">{location}</h1>
-            <p className="italic flex justify-end">{year}</p>
+            <p className="italic flex justify-end">
+              {yearFrom} - {yearTo}
+            </p>
           </div>
         </div>
       </div>
