@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
           />
         </a>
         <a
-          href="https://www.linkedin.com/in/devin-minnihan-6225a6176/"
+          href="https://www.linkedin.com/in/devin-m-6225a6176/"
           target="_blank"
           rel="noreferrer"
           className="flex justify-center items-center pr-4"

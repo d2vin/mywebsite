@@ -13,21 +13,21 @@ const Experience = () => {
         yearTo={'Present'}
         link={'https://www.tryletterhead.com/'}
       />
-      <ExperienceLink
+      {/* <ExperienceLink
         company={'AllDealershipJobs.com'}
         position={'Side-Project'}
         location={'New York'}
         yearFrom={'2023'}
         yearTo={'Present'}
         link={'https://www.alldealershipjobs.com/'}
-      />
+      /> */}
       <ExperienceLink
         company={'Productive'}
         position={'Thesis Project'}
         location={'New York'}
         yearFrom={'2022'}
         yearTo={'Present'}
-        link={'https://www.productive.vote/home'}
+        link={'https://productive-d2vin.vercel.app/'}
       />
       <ExperienceLink
         company={'Lectrium'}
@@ -45,14 +45,14 @@ const Experience = () => {
         yearTo={'2023'}
         link={'https://www.c2ventures.co/'}
       />
-      <ExperienceLink
+      {/* <ExperienceLink
         company={'Global Blockchain Convergence'}
         position={'Software Developer (Contract)'}
         location={'Remote'}
         yearFrom={'2022'}
         yearTo={'2023'}
         link={'https://gbcio.vercel.app'}
-      />
+      /> */}
       <ExperienceLink
         company={'Tribeca Early Stage Partners'}
         position={'Research and Marketing Intern'}
