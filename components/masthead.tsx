@@ -12,24 +12,28 @@ const Masthead = () => {
           Parsons 2022
         </p>
         <p className="w-full text-center sm:text-left pt-4 pl-4 md:pl-0 transition-all">
-          Software Developer and graduate of the{' '}
+          Software Developer and{' '}
+          <span>
+            graduate of{' '}
+            <a
+              href="https://www.newschool.edu/parsons/"
+              rel="noreferrer"
+              target="_blank"
+              className="hover:text-red-500"
+            >
+              The Parsons School of Design
+            </a>
+          </span>{' '}
+          with a focus on{' '}
           <a
-            href="https://www.newschool.edu/parsons/bba-design-management/"
+            href="https://www.newschool.edu/parsons/mfa-design-technology/"
             rel="noreferrer"
             target="_blank"
             className="hover:text-red-500"
           >
-            Strategic Design & Management Program
-          </a>{' '}
-          at the{' '}
-          <a
-            href="https://www.newschool.edu/parsons/"
-            rel="noreferrer"
-            target="_blank"
-            className="hover:text-red-500"
-          >
-            Parsons School of Design
+            Design and Technology
           </a>
+          .
         </p>
       </div>
       <div className="w-[176px] sm:w-[176px] flex-shrink-0 left-[50%] translate-x-[-50%] sm:left-0 sm:translate-x-0 relative mb-0 sm:mb-0 mr-auto pt-8 pl-4 pb-4 pr-4 md:pr-0">

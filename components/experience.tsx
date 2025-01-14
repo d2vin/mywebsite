@@ -27,7 +27,7 @@ const Experience = () => {
         location={'New York'}
         yearFrom={'2022'}
         yearTo={'Present'}
-        link={'https://productive-d2vin.vercel.app/'}
+        link={'https://productive-d2vins-projects.vercel.app/'}
       />
       <ExperienceLink
         company={'Lectrium'}
