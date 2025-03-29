@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
         <NavbarLink linkText={'Home'} href={'/'} />
         <NavbarLink linkText={'Posts'} href={'/posts'} />
         <NavbarLink linkText={'Contact'} href={'/contact'} />
+        <NavbarLink linkText={'Paint 🎨'} href={'/paint'} />
       </div>
       <div className="flex items-center justify-end space-x-2">
         <button
