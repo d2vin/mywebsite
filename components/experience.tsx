@@ -13,6 +13,38 @@ const Experience = () => {
         yearTo={'Present'}
         link={'https://www.tryletterhead.com/'}
       />
+      <ExperienceLink
+        company={'Maximal Asset Management'}
+        position={'Contract Software Engineer'}
+        location={'New York'}
+        yearFrom={'2024'}
+        yearTo={'Present'}
+        link={'https://www.maximalam.com/'}
+      />
+      <ExperienceLink
+        company={'Reign Ventures'}
+        position={'Contract Software Engineer'}
+        location={'New York'}
+        yearFrom={'2024'}
+        yearTo={'Present'}
+        link={'https://www.reignvc.com/'}
+      />
+      <ExperienceLink
+        company={'Teleportium'}
+        position={'Contract Software Engineer'}
+        location={'New York'}
+        yearFrom={'2023'}
+        yearTo={'Present'}
+        link={'https://www.teleportium.us/'}
+      />
+      <ExperienceLink
+        company={'Stop Capping Co.'}
+        position={'Side-Project'}
+        location={'New York'}
+        yearFrom={'2024'}
+        yearTo={'Present'}
+        link={'https://www.stopcapping.co/'}
+      />
       {/* <ExperienceLink
         company={'AllDealershipJobs.com'}
         position={'Side-Project'}
