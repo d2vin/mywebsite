@@ -70,6 +70,14 @@ const Experience = () => {
         link={'https://lectrium.io'}
       />
       <ExperienceLink
+        company={'Global Blockchain Convergence'}
+        position={'Contract Software Engineer'}
+        location={'New York'}
+        yearFrom={'2022'}
+        yearTo={'2023'}
+        link={'https://www.globalbc.io/'}
+      />
+      <ExperienceLink
         company={'C2 Ventures'}
         position={'Spring & Summer Research Intern'}
         location={'Remote'}
@@ -77,14 +85,6 @@ const Experience = () => {
         yearTo={'2023'}
         link={'https://www.c2ventures.co/'}
       />
-      {/* <ExperienceLink
-        company={'Global Blockchain Convergence'}
-        position={'Software Developer (Contract)'}
-        location={'Remote'}
-        yearFrom={'2022'}
-        yearTo={'2023'}
-        link={'https://gbcio.vercel.app'}
-      /> */}
       <ExperienceLink
         company={'Tribeca Early Stage Partners'}
         position={'Research and Marketing Intern'}
