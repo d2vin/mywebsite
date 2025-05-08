@@ -49,7 +49,7 @@ const Experience = () => {
         company={'Stop Capping Co.'}
         position={'Side-Project'}
         location={'New York'}
-        yearFrom={'2024'}
+        yearFrom={'2023'}
         yearTo={'Present'}
         link={'https://www.stopcapping.co/'}
       />
