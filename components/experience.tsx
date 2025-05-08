@@ -30,6 +30,14 @@ const Experience = () => {
         link={'https://www.reignvc.com/'}
       />
       <ExperienceLink
+        company={'Digital Gallery'}
+        position={'Freelance Software Engineer'}
+        location={'New York'}
+        yearFrom={'2024'}
+        yearTo={'Present'}
+        link={'https://kaito-mu.vercel.app/'}
+      />
+      <ExperienceLink
         company={'Teleportium'}
         position={'Contract Software Engineer'}
         location={'New York'}
