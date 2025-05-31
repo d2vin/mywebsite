@@ -51,7 +51,7 @@ const Experience = () => {
         location={'New York'}
         yearFrom={'2023'}
         yearTo={'Present'}
-        link={'https://www.stopcapping.co/'}
+        link={'https://scc-zeta.vercel.app/'}
       />
       {/* <ExperienceLink
         company={'AllDealershipJobs.com'}
