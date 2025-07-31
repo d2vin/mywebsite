@@ -113,7 +113,7 @@ export default function Component() {
     <div className="overflow-hidden">
       <div
         ref={containerRef}
-        className="absolute bg-gray-200 border-2 border-white shadow-md w-[360px] left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="absolute bg-gray-200 border-2 border-white shadow-md w-[360px] left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 my-8"
         style={{ zoom: 1 }}
       >
         <div

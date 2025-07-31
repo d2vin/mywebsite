@@ -1,52 +1,60 @@
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion'; // For animation
+import { motion } from 'framer-motion';
 
 interface NavbarLinkProps {
   linkText: string;
   href: string;
 }
 
-// Define your emoji mapping for each use case
-const emojiMap: Record<string, string> = {
-  Home: '🏠',
-  Posts: '📚',
-  Contact: '✉️',
-  Paint: '🎨',
+// Abbreviation map
+const abbreviationMap: Record<string, string> = {
+  Home: 'HM',
+  Posts: 'PO',
+  Contact: 'CT',
+  Paint: 'PT',
 };
 
 const NavbarLink: React.FC<NavbarLinkProps> = ({ linkText, href }) => {
-  const emoji = emojiMap[linkText] || '🔗'; // Default emoji if not found
+  const abbreviation =
+    abbreviationMap[linkText] || linkText.slice(0, 2).toUpperCase();
 
-  // Animation variants for Framer Motion
-  const emojiVariants = {
-    hidden: { opacity: 0, scale: 0.5 },
+  const textVariants = {
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
+      y: 0,
+      transition: { duration: 0.4, ease: 'easeOut' },
     },
   };
 
+  const gradientTextClasses =
+    'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent';
+
   return (
     <Link href={href}>
-      <p className="p-2 rounded-xl hover:dark:text-black hover:bg-neutral-200 hover:cursor-pointer">
-        {/* Full text for larger screens */}
-        <span className="hidden sm:inline">{linkText}</span>
-
-        {/* Emoji with animation for small screens */}
+      <motion.p
+        className="p-1 sm:p-2 rounded-xl hover:dark:text-black hover:bg-neutral-200 hover:cursor-pointer"
+        variants={textVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Full Text for larger screens */}
         <motion.span
-          className="sm:hidden text-2xl font-bold" // Increased text size for emoji
-          variants={emojiVariants}
-          initial="hidden"
-          animate="visible"
+          className={`hidden sm:inline-block font-extrabold tracking-wide text-md uppercase ${gradientTextClasses}`}
+          variants={textVariants}
         >
-          {emoji}
+          {linkText}
         </motion.span>
-      </p>
+
+        {/* Abbreviated text for small screens */}
+        <motion.span
+          className={`sm:hidden text-2xl font-extrabold uppercase tracking-widest ${gradientTextClasses}`}
+          variants={textVariants}
+        >
+          {abbreviation}
+        </motion.span>
+      </motion.p>
     </Link>
   );
 };
