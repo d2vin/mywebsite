@@ -113,7 +113,8 @@ export default function Component() {
     <div className="overflow-hidden">
       <div
         ref={containerRef}
-        className="absolute bg-gray-200 border-2 border-white shadow-md w-[90%] max-w-[800px] sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[40%] left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="absolute bg-gray-200 border-2 border-white shadow-md w-[360px] left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        style={{ zoom: 1 }}
       >
         <div
           className="bg-blue-900 text-white px-2 py-1 flex justify-between items-center cursor-move"
@@ -202,13 +203,13 @@ export default function Component() {
             </Button>
           </div>
           <div
-            className="flex-grow overflow-auto border border-gray-400 h-[250px] sm:h-[500px]"
-            style={{ width: '724px'}}
+            className="overflow-hidden border border-gray-400"
+            style={{ width: '300px', height: '300px' }}
           >
             <canvas
               ref={canvasRef}
-              width={2000}
-              height={2000}
+              width={300}
+              height={300}
               onMouseDown={startDrawing}
               onMouseMove={draw}
               onMouseUp={stopDrawing}
