@@ -49,7 +49,7 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ linkText, href }) => {
 
         {/* Abbreviated text for small screens */}
         <motion.span
-          className={`sm:hidden text-2xl font-extrabold uppercase tracking-widest ${gradientTextClasses}`}
+          className={`sm:hidden text-xl font-extrabold uppercase tracking-widest ${gradientTextClasses}`}
           variants={textVariants}
         >
           {abbreviation}
