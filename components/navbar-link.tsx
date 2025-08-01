@@ -29,7 +29,7 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ linkText, href }) => {
   };
 
   const gradientTextClasses =
-    'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent';
+    'bg-gradient-to-r from-blue-500 via-yellow-500 to-red-500 bg-clip-text text-transparent';
 
   return (
     <Link href={href}>
