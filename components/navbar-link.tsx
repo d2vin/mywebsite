@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
 interface NavbarLinkProps {
   linkText: string;
@@ -19,42 +18,26 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ linkText, href }) => {
   const abbreviation =
     abbreviationMap[linkText] || linkText.slice(0, 2).toUpperCase();
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, ease: 'easeOut' },
-    },
-  };
-
   const gradientTextClasses =
     'bg-gradient-to-r from-blue-500 via-yellow-500 to-red-500 bg-clip-text text-transparent';
 
   return (
     <Link href={href}>
-      <motion.p
-        className="p-1 sm:p-2 rounded-xl hover:dark:text-black hover:bg-neutral-200 hover:cursor-pointer"
-        variants={textVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <p className="p-1 sm:p-2 rounded-xl hover:dark:text-black hover:bg-neutral-200 hover:cursor-pointer">
         {/* Full Text for larger screens */}
-        <motion.span
+        <span
           className={`hidden sm:inline-block font-extrabold tracking-wide text-md uppercase ${gradientTextClasses}`}
-          variants={textVariants}
         >
           {linkText}
-        </motion.span>
+        </span>
 
         {/* Abbreviated text for small screens */}
-        <motion.span
+        <span
           className={`sm:hidden text-xl font-extrabold uppercase tracking-widest ${gradientTextClasses}`}
-          variants={textVariants}
         >
           {abbreviation}
-        </motion.span>
-      </motion.p>
+        </span>
+      </p>
     </Link>
   );
 };
