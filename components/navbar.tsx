@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="rounded-2xl flex items-center justify-between border border-black dark:border-white dark:text-white text-black mx-4 md:mx-0 transition-all">
+    <nav className="animate-fade-in rounded-2xl flex items-center justify-between border border-black dark:border-white dark:text-white text-black mx-4 md:mx-0 transition-all">
       <div className="p-2 w-1/2 flex">
         <NavbarLink linkText={'Home'} href={'/'} />
         <NavbarLink linkText={'Posts'} href={'/posts'} />

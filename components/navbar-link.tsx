@@ -23,7 +23,7 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ linkText, href }) => {
 
   return (
     <Link href={href}>
-      <p className="p-1 sm:p-2 rounded-xl hover:dark:text-black hover:bg-neutral-200 hover:cursor-pointer">
+      <p className="animate-fade-in p-1 sm:p-2 rounded-xl hover:dark:text-black hover:bg-neutral-200 hover:cursor-pointer">
         {/* Full Text for larger screens */}
         <span
           className={`hidden sm:inline-block font-extrabold tracking-wide text-md uppercase ${gradientTextClasses}`}
