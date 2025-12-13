@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import NavbarLink from './navbar-link';
 import { useTheme } from 'next-themes';
@@ -6,15 +6,30 @@ import { AiFillGithub } from 'react-icons/ai';
 
 const Navbar: React.FC = () => {
   const { theme, setTheme } = useTheme();
+  // State to track if the component has been mounted
+  const [hasMounted, setHasMounted] = useState(false);
+
+  // Set hasMounted to true only on the initial mount
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // Conditionally apply the fade-in class
+  const animationClass = hasMounted ? 'opacity-100' : 'animate-fade-in';
 
   return (
-    <nav className="animate-fade-in rounded-2xl flex items-center justify-between border border-black dark:border-white dark:text-white text-black mx-4 md:mx-0 transition-all">
+    <nav 
+      // The fade-in will happen on the first mount. 
+      // After that, the opacity-100 class ensures it remains visible.
+      className={`${animationClass} rounded-2xl flex items-center justify-between border border-black dark:border-white dark:text-white text-black mx-4 md:mx-0 transition-all`}
+    >
       <div className="p-2 w-1/2 flex">
         <NavbarLink linkText={'Home'} href={'/'} />
         <NavbarLink linkText={'Posts'} href={'/posts'} />
         <NavbarLink linkText={'Contact'} href={'/contact'} />
         <NavbarLink linkText={'Paint'} href={'/paint'} />
       </div>
+      {/* ... rest of the Navbar content */}
       <div className="flex items-center justify-end space-x-2">
         <button
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
