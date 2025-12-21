@@ -236,9 +236,9 @@ export default function Component() {
             ))}
           </div>
         </div>
-        <div className="bg-gray-300 px-2 py-1 text-sm border-t border-gray-400">
-          {/* For Help, click Help Topics on the Help Menu. */}
-        </div>
+        {/* <div className="bg-gray-300 px-2 py-1 text-sm border-t border-gray-400">
+          For Help, click Help Topics on the Help Menu.
+        </div> */}
       </div>
     </div>
   );
