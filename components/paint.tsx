@@ -146,12 +146,12 @@ export default function Component() {
           </div>
         </div>
         <div className="bg-gray-300 px-2 py-1 text-sm">
-          <span className="mr-4">File</span>
+          {/* <span className="mr-4">File</span>
           <span className="mr-4">Edit</span>
           <span className="mr-4">View</span>
           <span className="mr-4">Image</span>
           <span className="mr-4">Options</span>
-          <span>Help</span>
+          <span>Help</span> */}
         </div>
         <div className="flex">
           <div className="w-8 bg-gray-300 p-0.5 border-r border-gray-400">
@@ -237,7 +237,7 @@ export default function Component() {
           </div>
         </div>
         <div className="bg-gray-300 px-2 py-1 text-sm border-t border-gray-400">
-          For Help, click Help Topics on the Help Menu.
+          {/* For Help, click Help Topics on the Help Menu. */}
         </div>
       </div>
     </div>
