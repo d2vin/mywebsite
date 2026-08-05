@@ -1,52 +1,40 @@
-import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowDown, ArrowUpRight, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const Masthead = () => {
-  return (
-    <div className="flex flex-col-reverse items-center sm:flex-row sm:items-start">
-      <div className="max-w-lg flex flex-col pr-6 md:pl-0 sm:pt-20 md:pt-20">
-        <p className="sm:text-6xl text-3xl pl-4 md:pl-0 text-center sm:text-left">
-          Devin Minnihan
-        </p>
-        <p className="text-2xl font-extralight pl-4 md:pl-0 transition-all text-center sm:text-left">
-          Parsons 2022
-        </p>
-        <p className="w-full text-center sm:text-left pt-4 pl-4 md:pl-0 transition-all">
-          Software Developer and{' '}
-          <span>
-            graduate of{' '}
-            <a
-              href="https://www.newschool.edu/parsons/"
-              rel="noreferrer"
-              target="_blank"
-              className="hover:text-red-500"
-            >
-              The Parsons School of Design
-            </a>
-          </span>{' '}
-          with a focus on{' '}
-          <a
-            href="https://www.newschool.edu/parsons/mfa-design-technology/"
-            rel="noreferrer"
-            target="_blank"
-            className="hover:text-red-500"
-          >
-            Design and Technology
-          </a>
-          .
-        </p>
+const reveal = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } };
+
+const Masthead = () => (
+  <motion.section
+    className="hero"
+    initial="hidden"
+    animate="show"
+    transition={{ staggerChildren: 0.1, delayChildren: 0.08 }}
+  >
+    <motion.div className="hero-copy" variants={reveal} transition={{ duration: 0.7 }}>
+      <div className="availability"><span /><Sparkles size={13} /> Available for select projects</div>
+      <h1>I build digital<br />things with <em>feeling.</em></h1>
+      <p className="hero-deck">
+        I&apos;m Devin, a New York–based software engineer and Parsons-trained designer creating expressive, useful experiences where code and culture meet.
+      </p>
+      <div className="hero-actions">
+        <a href="#work" className="button button-primary">Explore my work <ArrowDown size={16} /></a>
+        <Link href="/contact"><a className="button button-ghost">Start a conversation <ArrowUpRight size={16} /></a></Link>
       </div>
-      <div className="w-[176px] sm:w-[176px] flex-shrink-0 left-[50%] translate-x-[-50%] sm:left-0 sm:translate-x-0 relative mb-0 sm:mb-0 mr-auto pt-8 pl-4 pb-4 pr-4 md:pr-0">
-        <Image
-          src="/me.jpg"
-          width={267}
-          height={400}
-          alt="sunset icon"
-          className="rounded-lg"
-        />
+    </motion.div>
+
+    <motion.div className="portrait-wrap" variants={reveal} transition={{ duration: 0.8, delay: 0.12 }}>
+      <div className="portrait-glow" />
+      <div className="portrait-frame">
+        <Image src="/me.jpg" layout="fill" objectFit="cover" objectPosition="center 30%" alt="Devin Minnihan" priority />
+        <div className="portrait-shade" />
+        <div className="portrait-label"><span>Creative technologist</span><span>NYC / EST</span></div>
       </div>
-    </div>
-  );
-};
+      <div className="orbit orbit-one" />
+      <div className="orbit orbit-two" />
+    </motion.div>
+  </motion.section>
+);
 
 export default Masthead;

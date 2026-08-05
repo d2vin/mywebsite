@@ -1,43 +1,28 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import Layout from '../../components/layout';
-import Works from '../../components/experience';
 import { getSortedPostsData } from '../../utils/posts';
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
+  return { props: { allPostsData: getSortedPostsData() } };
 }
 
-export default function Index({ allPostsData }: any) {
+export default function Posts({ allPostsData }: any) {
   return (
-    <div className="h-screen mb-20">
-      <Layout>
-        <section className="transition-all ml-4 mr-4 md:mx-0 sm:pt-20 md:pt-20 pt-20">
-          <h1 className="sm:text-6xl text-3xl transition-all">
-            🗒️ Featured Posts
-          </h1>
-          <ul className="pt-8">
-            {allPostsData.map(({ id, date, title }: any) => (
-              <>
-                <Link key={id} href={`posts/${id}`}>
-                  <div className="cursor-pointer w-7/8 border-b border-black dark:border-gray-200 py-3 transform hover:scale-[1.01] transition-all">
-                    <div className="flex justify-between">
-                      <h1>{title}</h1>
-                      <div className="hidden lg:block">{date}</div>
-                    </div>
-                  </div>
-                </Link>
-              </>
-            ))}
-          </ul>
-        </section>
-      </Layout>
-    </div>
+    <Layout>
+      <Head><title>Notes — Devin Minnihan</title><meta name="description" content="Notes on software, design, and the work behind the work." /></Head>
+      <section className="page-section">
+        <span className="page-eyebrow">Field notes</span>
+        <h1 className="page-title">Stories from behind<br />the screen.</h1>
+        <div className="post-list">
+          {allPostsData.map(({ id, date, title }: any) => (
+            <Link key={id} href={`/posts/${id}`}>
+              <a className="post-card"><h2>{title}</h2><time>{date}</time><ArrowUpRight size={17} /></a>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </Layout>
   );
 }

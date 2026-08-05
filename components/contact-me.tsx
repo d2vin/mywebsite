@@ -1,153 +1,53 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import axios from 'axios';
+import { ArrowUpRight } from 'lucide-react';
 
-const ContactMe: React.FC = () => {
-  const [status, setStatus] = useState({
-    submitted: false,
-    submitting: false,
-    info: { error: false, msg: null },
-  });
+const ContactMe = () => {
+  const [status, setStatus] = useState({ submitted: false, submitting: false, error: '' });
+  const [inputs, setInputs] = useState({ fullName: '', email: '', message: '' });
 
-  const [inputs, setInputs] = useState({
-    fullName: '',
-    email: '',
-    message: '',
-  });
-
-  const handleOnChange = useCallback(
-    (e: { persist: () => void; target: { id: any; value: any } }) => {
-      e.persist();
-      setInputs((prev) => ({
-        ...prev,
-        [e.target.id]: e.target.value,
-      }));
-      setStatus({
-        submitted: false,
-        submitting: false,
-        info: { error: false, msg: null },
-      });
-    },
-    []
-  );
-
-  const handleServerResponse = useCallback((ok: any, msg: any) => {
-    if (ok) {
-      setStatus({
-        submitted: true,
-        submitting: false,
-        info: { error: false, msg: msg },
-      });
-      setInputs({
-        fullName: '',
-        email: '',
-        message: '',
-      });
-    } else {
-      setStatus({
-        submitted: false,
-        submitting: false,
-        info: { error: true, msg: msg },
-      });
-    }
+  const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setInputs((current) => ({ ...current, [event.target.id]: event.target.value }));
+    setStatus({ submitted: false, submitting: false, error: '' });
   }, []);
 
-  const handleSubmit = useCallback(
-    (e: { preventDefault: () => void }) => {
-      e.preventDefault();
-      setStatus((prevStatus) => ({
-        ...prevStatus,
-        submitting: true,
-      }));
-      axios({
-        method: 'POST',
-        url: process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT_URL,
-        data: inputs,
-      }).then((_response) => {
-        handleServerResponse(true, 'Message sent!');
-      });
-    },
-    [inputs, handleServerResponse]
-  );
+  const handleSubmit = useCallback(async (event: React.FormEvent) => {
+    event.preventDefault();
+    setStatus({ submitted: false, submitting: true, error: '' });
+    try {
+      await axios.post(process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT_URL as string, inputs);
+      setInputs({ fullName: '', email: '', message: '' });
+      setStatus({ submitted: true, submitting: false, error: '' });
+    } catch {
+      setStatus({ submitted: false, submitting: false, error: 'The message could not be sent. Please email me directly instead.' });
+    }
+  }, [inputs]);
+
   return (
-    <div className="flex flex-col justify-center pt-20">
-      <div className="flex-1 flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold">Contact</h2>
-        <p className="text-lg pt-8 px-10 text-center">
-          Send me a message if you have any questions or want to work together.
-        </p>
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-4 mt-16 px-10 lg:mt-10 min-w-full lg:min-w-[500px]"
-        >
-          {status.info.error && (
-            <div
-              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-              role="alert"
-            >
-              <strong className="font-bold">Error</strong>:{' '}
-              <span className="block sm:inline-table">{status.info.msg}</span>
-            </div>
-          )}
-          {status.submitted ? (
-            <div
-              className="text-white text-xl font-bold px-4 py-3 rounded relative text-center"
-              role="alert"
-            >
-              Thanks for reaching out!
-              <br />
-              I&apos;ll be sure to get back to you shortly.
-            </div>
-          ) : (
-            <>
-              <input
-                id="fullName"
-                name="fullName"
-                required
-                maxLength={128}
-                type="text"
-                placeholder="Your name"
-                className="bg-neutral-100 text-black dark:bg-black dark:text-white outline-none border-2 border-black dark:border-white rounded-3xl px-8 py-2"
-                onChange={handleOnChange}
-                value={inputs.fullName}
-              />
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                maxLength={128}
-                placeholder="Your E-mail"
-                className="bg-neutral-100 text-black dark:bg-black dark:text-white outline-none border-2 border-black dark:border-white rounded-3xl px-8 py-2"
-                onChange={handleOnChange}
-                value={inputs.email}
-              />
-              <textarea
-                name="message"
-                id="message"
-                required
-                maxLength={1048576}
-                placeholder="Additional information"
-                className="bg-neutral-100 dark:bg-black text-white dark:text-white outline-none border-2 dark:border-white border-black rounded-3xl px-8 py-6 min-h-[16em]"
-                onChange={handleOnChange}
-                value={inputs.message}
-              ></textarea>
-              <div className="text-center mt-4">
-                <button
-                  type="submit"
-                  className="bg-black text-white dark:bg-white dark:text-black rounded-3xl px-8 py-2"
-                >
-                  {!status.submitting
-                    ? !status.submitted
-                      ? 'Submit'
-                      : 'Submitted'
-                    : 'Sending...'}
-                </button>
-              </div>
-            </>
-          )}
-        </form>
+    <section className="contact-grid">
+      <div className="contact-copy">
+        <span className="page-eyebrow">Contact</span>
+        <h1>Let&apos;s make<br />something <em>good.</em></h1>
+        <p>Have a thoughtful product, a strange idea, or a hard problem? Tell me what you&apos;re working on and where I can help.</p>
+        <div className="social-links">
+          <a href="https://github.com/d2vin" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/devin-m-6225a6176/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        </div>
       </div>
-    </div>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        {status.submitted ? (
+          <div className="form-message">Message sent. I&apos;ll get back to you soon.</div>
+        ) : (
+          <>
+            <div className="field"><label htmlFor="fullName">Your name</label><input id="fullName" required maxLength={128} value={inputs.fullName} onChange={handleChange} placeholder="Jane Smith" /></div>
+            <div className="field"><label htmlFor="email">Email address</label><input id="email" type="email" required maxLength={128} value={inputs.email} onChange={handleChange} placeholder="jane@studio.com" /></div>
+            <div className="field"><label htmlFor="message">What are we making?</label><textarea id="message" required maxLength={1048576} value={inputs.message} onChange={handleChange} placeholder="A little context goes a long way..." /></div>
+            {status.error && <p className="form-message" role="alert">{status.error}</p>}
+            <button className="submit-button" type="submit" disabled={status.submitting}>{status.submitting ? 'Sending…' : <>Send message <ArrowUpRight size={15} /></>}</button>
+          </>
+        )}
+      </form>
+    </section>
   );
 };
 

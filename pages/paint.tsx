@@ -7,7 +7,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Paint</title>
+        <title>Paint — Devin Minnihan</title>
+        <meta name="description" content="A tiny interactive paint canvas by Devin Minnihan." />
       </Head>
       <Layout>
         <Paint />

@@ -2,244 +2,156 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
 const colors = [
-  '#000000',
-  '#808080',
-  '#800000',
-  '#808000',
-  '#008000',
-  '#008080',
-  '#000080',
-  '#800080',
-  '#808040',
-  '#004040',
-  '#0080FF',
-  '#004080',
-  '#8000FF',
-  '#804000',
-  '#FFFFFF',
-  '#C0C0C0',
-  '#FF0000',
-  '#FFFF00',
-  '#00FF00',
-  '#00FFFF',
-  '#0000FF',
-  '#FF00FF',
-  '#FFFF80',
-  '#00FF80',
-  '#80FFFF',
-  '#8080FF',
-  '#FF0080',
-  '#FF8040',
+  '#000000', '#808080', '#800000', '#808000', '#008000', '#008080', '#000080',
+  '#800080', '#808040', '#004040', '#0080FF', '#004080', '#8000FF', '#804000',
+  '#FFFFFF', '#C0C0C0', '#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF',
+  '#FF00FF', '#FFFF80', '#00FF80', '#80FFFF', '#8080FF', '#FF0080', '#FF8040',
 ];
 
-export default function Component() {
+type Tool = 'brush' | 'eraser';
+
+export default function Paint() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const historyRef = useRef<string[]>([]);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState('#000000');
-  const [tool, setTool] = useState('brush');
+  const [tool, setTool] = useState<Tool>('brush');
+  const [minimized, setMinimized] = useState(false);
+  const [maximized, setMaximized] = useState(false);
+  const [open, setOpen] = useState(true);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
 
-  useEffect(() => {
+  const fillCanvas = () => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
-    if (context) {
-      if (!canvas) return;
-      context.fillStyle = '#FFFFFF';
-      context.fillRect(0, 0, canvas.width, canvas.height);
-    }
-  }, []);
-
-  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext('2d');
-    if (context) {
-      if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
-      const x = 'clientX' in e ? e.clientX - rect.left : e.touches[0].clientX - rect.left;
-      const y = 'clientY' in e ? e.clientY - rect.top : e.touches[0].clientY - rect.top;
-      context.beginPath();
-      context.moveTo(x, y);
-      setIsDrawing(true);
-    }
+    if (!canvas || !context) return;
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(0, 0, canvas.width, canvas.height);
   };
 
-  const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+  useEffect(fillCanvas, []);
+
+  const saveSnapshot = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    historyRef.current = [...historyRef.current.slice(-19), canvas.toDataURL()];
+  };
+
+  const undo = () => {
+    const canvas = canvasRef.current;
+    const context = canvas?.getContext('2d');
+    const snapshot = historyRef.current.pop();
+    if (!canvas || !context || !snapshot) return;
+    const image = new Image();
+    image.onload = () => { context.clearRect(0, 0, canvas.width, canvas.height); context.drawImage(image, 0, 0); };
+    image.src = snapshot;
+  };
+
+  const clearCanvas = () => { saveSnapshot(); fillCanvas(); };
+
+  const download = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const link = document.createElement('a');
+    link.download = 'devin-paint.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
+
+  const getPoint = (event: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+    const rect = canvas.getBoundingClientRect();
+    const clientX = 'clientX' in event ? event.clientX : event.touches[0].clientX;
+    const clientY = 'clientY' in event ? event.clientY : event.touches[0].clientY;
+    return { x: (clientX - rect.left) * (canvas.width / rect.width), y: (clientY - rect.top) * (canvas.height / rect.height) };
+  };
+
+  const startDrawing = (event: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    const context = canvasRef.current?.getContext('2d');
+    if (!context) return;
+    saveSnapshot();
+    const { x, y } = getPoint(event);
+    context.beginPath();
+    context.moveTo(x, y);
+    setIsDrawing(true);
+  };
+
+  const draw = (event: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     if (!isDrawing) return;
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext('2d');
-    if (context) {
-      if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
-      const x = 'clientX' in e ? e.clientX - rect.left : e.touches[0].clientX - rect.left;
-      const y = 'clientY' in e ? e.clientY - rect.top : e.touches[0].clientY - rect.top;
-      context.lineTo(x, y);
-      context.strokeStyle = tool === 'eraser' ? '#FFFFFF' : color;
-      context.lineWidth = tool === 'eraser' ? 20 : 2;
-      context.lineCap = 'round';
-      context.stroke();
-    }
+    event.preventDefault();
+    const context = canvasRef.current?.getContext('2d');
+    if (!context) return;
+    const { x, y } = getPoint(event);
+    context.lineTo(x, y);
+    context.strokeStyle = tool === 'eraser' ? '#FFFFFF' : color;
+    context.lineWidth = tool === 'eraser' ? 36 : 5;
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+    context.stroke();
   };
 
-  const stopDrawing = () => {
-    setIsDrawing(false);
-  };
-
-  const startDragging = (e: React.MouseEvent<HTMLDivElement>) => {
+  const startDragging = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (maximized || window.innerWidth < 761) return;
     setDragging(true);
-    setPosition({
-      x: e.clientX - (containerRef.current?.offsetLeft || 0),
-      y: e.clientY - (containerRef.current?.offsetTop || 0),
-    });
+    setPosition({ x: event.clientX - (containerRef.current?.offsetLeft || 0), y: event.clientY - (containerRef.current?.offsetTop || 0) });
   };
 
-  const onDrag = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (dragging) {
-      const left = e.clientX - position.x;
-      const top = e.clientY - position.y;
-      if (containerRef.current) {
-        containerRef.current.style.left = `${left}px`;
-        containerRef.current.style.top = `${top}px`;
-      }
-    }
+  const onDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!dragging || !containerRef.current) return;
+    containerRef.current.style.left = `${event.clientX - position.x}px`;
+    containerRef.current.style.top = `${event.clientY - position.y}px`;
   };
 
-  const stopDragging = () => {
-    setDragging(false);
+  const toggleMaximize = () => {
+    if (containerRef.current) { containerRef.current.style.left = ''; containerRef.current.style.top = ''; }
+    setMaximized((value) => !value);
+    setMinimized(false);
   };
+
+  if (!open) {
+    return <section className="paint-stage paint-stage-closed"><button className="paint-reopen" onClick={() => setOpen(true)}>Open Paint</button></section>;
+  }
 
   return (
-    <div className="overflow-hidden">
-      <div
-        ref={containerRef}
-        className="absolute bg-gray-200 border-2 border-white shadow-md w-[360px] left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 my-8"
-        style={{ zoom: 1 }}
-      >
-        <div
-          className="bg-blue-900 text-white px-2 py-1 flex justify-between items-center cursor-move"
-          onMouseDown={startDragging}
-          onMouseMove={onDrag}
-          onMouseUp={stopDragging}
-          onMouseLeave={stopDragging}
-        >
+    <section className="paint-stage" aria-label="Interactive paint canvas">
+      <div ref={containerRef} className={`paint-window ${maximized ? 'paint-window-maximized' : ''} ${minimized ? 'paint-window-minimized' : ''}`}>
+        <div className="paint-titlebar" onMouseDown={startDragging} onMouseMove={onDrag} onMouseUp={() => setDragging(false)} onMouseLeave={() => setDragging(false)}>
           <span>untitled - Paint</span>
-          <div className="flex gap-1">
-            <Button
-              variant="ghost"
-              className="h-5 w-5 p-0 min-w-0 text-white hover:bg-blue-700"
-            >
-              _
-            </Button>
-            <Button
-              variant="ghost"
-              className="h-5 w-5 p-0 min-w-0 text-white hover:bg-blue-700"
-            >
-              □
-            </Button>
-            <Button
-              variant="ghost"
-              className="h-5 w-5 p-0 min-w-0 text-white hover:bg-blue-700"
-            >
-              ×
-            </Button>
+          <div className="paint-window-controls" onMouseDown={(event) => event.stopPropagation()}>
+            <button onClick={() => setMinimized((value) => !value)} aria-label={minimized ? 'Restore Paint' : 'Minimize Paint'} title={minimized ? 'Restore' : 'Minimize'}>_</button>
+            <button onClick={toggleMaximize} aria-label={maximized ? 'Restore Paint window' : 'Maximize Paint window'} title={maximized ? 'Restore' : 'Maximize'}>{maximized ? '❐' : '□'}</button>
+            <button onClick={() => setOpen(false)} aria-label="Close Paint" title="Close">×</button>
           </div>
         </div>
-        <div className="bg-gray-300 px-2 py-1 text-sm">
-          {/* <span className="mr-4">File</span>
-          <span className="mr-4">Edit</span>
-          <span className="mr-4">View</span>
-          <span className="mr-4">Image</span>
-          <span className="mr-4">Options</span>
-          <span>Help</span> */}
-        </div>
-        <div className="flex">
-          <div className="w-8 bg-gray-300 p-0.5 border-r border-gray-400">
-            <Button
-              variant="ghost"
-              className={`w-7 h-7 p-0 min-w-0 mb-0.5 ${
-                tool === 'brush'
-                  ? 'bg-gray-300 border border-gray-400 shadow-inner'
-                  : ''
-              }`}
-              onClick={() => setTool('brush')}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-              >
-                <path d="M18 12l-8-8-6 6c-2 2-2 5 0 7s5 2 7 0l7-7" />
-                <path d="M17 7l3 3" />
-              </svg>
-            </Button>
-            <Button
-              variant="ghost"
-              className={`w-7 h-7 p-0 min-w-0 mb-0.5 ${
-                tool === 'eraser'
-                  ? 'bg-gray-300 border border-gray-400 shadow-inner'
-                  : ''
-              }`}
-              onClick={() => setTool('eraser')}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-              >
-                <path d="M20 20H7L3 16C2 15 2 13 3 12L13 2L22 11L20 20Z" />
-                <path d="M17 17L7 7" />
-              </svg>
-            </Button>
+
+        {!minimized && <>
+          <div className="paint-menu" role="toolbar" aria-label="File and editing actions">
+            <button onClick={download} title="Download your drawing as a PNG">Save</button>
+            <button onClick={undo} disabled={!historyRef.current.length} title="Undo the last stroke">Undo</button>
+            <button onClick={clearCanvas} title="Clear the canvas">Clear</button>
           </div>
-          <div
-            className="overflow-hidden border border-gray-400"
-            style={{ width: '300px', height: '300px' }}
-          >
-            <canvas
-              ref={canvasRef}
-              width={300}
-              height={300}
-              onMouseDown={startDrawing}
-              onMouseMove={draw}
-              onMouseUp={stopDrawing}
-              onMouseOut={stopDrawing}
-              onTouchStart={startDrawing}
-              onTouchMove={draw}
-              onTouchEnd={stopDrawing}
-              style={{ touchAction: 'none' }}
-            />
+          <div className="paint-workspace">
+            <div className="paint-tools" role="toolbar" aria-label="Drawing tools">
+              <Button variant="ghost" className={tool === 'brush' ? 'paint-tool-active' : ''} onClick={() => setTool('brush')} aria-label="Brush tool" title="Brush">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 12l-8-8-6 6c-2 2-2 5 0 7s5 2 7 0l7-7"/><path d="M17 7l3 3"/></svg>
+              </Button>
+              <Button variant="ghost" className={tool === 'eraser' ? 'paint-tool-active' : ''} onClick={() => setTool('eraser')} aria-label="Eraser tool" title="Eraser">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 20H7L3 16C2 15 2 13 3 12L13 2L22 11L20 20Z"/><path d="M17 17L7 7"/></svg>
+              </Button>
+            </div>
+            <div className="paint-canvas-wrap">
+              <canvas ref={canvasRef} width={600} height={600} aria-label="Drawing canvas" onMouseDown={startDrawing} onMouseMove={draw} onMouseUp={() => setIsDrawing(false)} onMouseOut={() => setIsDrawing(false)} onTouchStart={startDrawing} onTouchMove={draw} onTouchEnd={() => setIsDrawing(false)} />
+            </div>
           </div>
-        </div>
-        <div className="flex bg-gray-300 p-1 border-t border-gray-400">
-          <div className="flex flex-wrap gap-1">
-            {colors.map((c) => (
-              <Button
-                key={c}
-                variant="ghost"
-                className={`w-6 h-6 p-0 min-w-0 ${
-                  color === c ? 'ring-1 ring-gray-600' : ''
-                }`}
-                style={{ backgroundColor: c }}
-                onClick={() => setColor(c)}
-              />
-            ))}
+          <div className="paint-palette" aria-label="Color palette">
+            {colors.map((swatch) => <button key={swatch} className={color === swatch ? 'paint-swatch-active' : ''} style={{ backgroundColor: swatch }} onClick={() => { setColor(swatch); setTool('brush'); }} aria-label={`Use color ${swatch}`} title={swatch} />)}
           </div>
-        </div>
-        {/* <div className="bg-gray-300 px-2 py-1 text-sm border-t border-gray-400">
-          For Help, click Help Topics on the Help Menu.
-        </div> */}
+          <div className="paint-status"><span>{tool === 'brush' ? `Brush · ${color}` : 'Eraser'}</span><span>600 × 600</span></div>
+        </>}
       </div>
-    </div>
+    </section>
   );
 }

@@ -8,13 +8,9 @@ const Contact: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Contact</title>
+        <title>Contact — Devin Minnihan</title>
       </Head>
-      <div className="h-screen mb-20">
-        <Layout>
-          <ContactMe />
-        </Layout>
-      </div>
+      <Layout><ContactMe /></Layout>
     </>
   );
 };

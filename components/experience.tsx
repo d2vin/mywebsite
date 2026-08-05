@@ -1,124 +1,31 @@
-import React from 'react';
 import ExperienceLink from './experience-link';
 
-const Experience = () => {
-  return (
-    <div className="pb-40">
-      <h1 className="pt-8 text-4xl pl-4 md:pl-0 transition-all">Experience</h1>
-      <ExperienceLink
-        company={'Letterhead'}
-        position={'Software Engineer'}
-        location={'New York'}
-        yearFrom={'2022'}
-        yearTo={'Present'}
-        link={'https://www.tryletterhead.com/'}
-      />
-      <ExperienceLink
-        company={'Anakin Clothing'}
-        position={'Software Engineer'}
-        location={'New York'}
-        yearFrom={'2019'}
-        yearTo={'Present'}
-        link={'https://anakin.clothing'}
-      />
-      <ExperienceLink
-        company={'Baek Industries'}
-        position={'Contract Software Engineer'}
-        location={'New York'}
-        yearFrom={'2025'}
-        yearTo={'Present'}
-        link={'https://baekindustries.com/'}
-      />
-      <ExperienceLink
-        company={'Maximal Asset Management'}
-        position={'Contract Software Engineer'}
-        location={'New York'}
-        yearFrom={'2024'}
-        yearTo={'Present'}
-        link={'https://www.maximalam.com/'}
-      />
-      <ExperienceLink
-        company={'Reign Ventures'}
-        position={'Contract Software Engineer'}
-        location={'New York'}
-        yearFrom={'2024'}
-        yearTo={'Present'}
-        link={'https://www.reignvc.com/'}
-      />
-      <ExperienceLink
-        company={'Digital Gallery'}
-        position={'Freelance Software Engineer'}
-        location={'New York'}
-        yearFrom={'2024'}
-        yearTo={'Present'}
-        link={'https://kaito-mu.vercel.app/'}
-      />
-      <ExperienceLink
-        company={'Teleportium'}
-        position={'Contract Software Engineer'}
-        location={'New York'}
-        yearFrom={'2023'}
-        yearTo={'Present'}
-        link={'https://www.teleportium.us/'}
-      />
-      <ExperienceLink
-        company={'Stop Capping Co.'}
-        position={'Side-Project'}
-        location={'New York'}
-        yearFrom={'2023'}
-        yearTo={'Present'}
-        link={'https://scc-zeta.vercel.app/'}
-      />
-      {/* <ExperienceLink
-        company={'AllDealershipJobs.com'}
-        position={'Side-Project'}
-        location={'New York'}
-        yearFrom={'2023'}
-        yearTo={'Present'}
-        link={'https://www.alldealershipjobs.com/'}
-      /> */}
-      <ExperienceLink
-        company={'Productive'}
-        position={'Thesis Project'}
-        location={'New York'}
-        yearFrom={'2022'}
-        yearTo={'Present'}
-        link={'https://productive-d2vins-projects.vercel.app/'}
-      />
-      <ExperienceLink
-        company={'Lectrium'}
-        position={'Frontend Software Developer'}
-        location={'New York'}
-        yearFrom={'2022'}
-        yearTo={'2023'}
-        link={'https://lectrium.io'}
-      />
-      <ExperienceLink
-        company={'Global Blockchain Convergence'}
-        position={'Contract Software Engineer'}
-        location={'New York'}
-        yearFrom={'2022'}
-        yearTo={'2023'}
-        link={'https://www.globalbc.io/'}
-      />
-      <ExperienceLink
-        company={'C2 Ventures'}
-        position={'Spring & Summer Research Intern'}
-        location={'Remote'}
-        yearFrom={'2022'}
-        yearTo={'2023'}
-        link={'https://www.c2ventures.co/'}
-      />
-      <ExperienceLink
-        company={'Tribeca Early Stage Partners'}
-        position={'Research and Marketing Intern'}
-        location={'New York'}
-        yearFrom={'2021'}
-        yearTo={'2022'}
-        link={'https://www.tribecaesp.com/'}
-      />
+const roles = [
+  ['Letterhead', 'Software Engineer', 'New York', '2022', 'Present', 'https://www.tryletterhead.com/'],
+  ['Anakin Clothing', 'Software Engineer', 'New York', '2019', 'Present', 'https://anakin.clothing'],
+  ['Baek Industries', 'Contract Software Engineer', 'New York', '2025', 'Present', 'https://baekindustries.com/'],
+  ['Maximal Asset Management', 'Contract Software Engineer', 'New York', '2024', 'Present', 'https://www.maximalam.com/'],
+  ['Reign Ventures', 'Contract Software Engineer', 'New York', '2024', 'Present', 'https://www.reignvc.com/'],
+  ['Digital Gallery', 'Freelance Software Engineer', 'New York', '2024', 'Present', 'https://kaito-mu.vercel.app/'],
+  ['Teleportium', 'Contract Software Engineer', 'New York', '2023', 'Present', 'https://www.teleportium.us/'],
+  ['Productive', 'Thesis Project', 'New York', '2022', 'Present', 'https://productive-d2vins-projects.vercel.app/'],
+  ['Lectrium', 'Frontend Software Developer', 'New York', '2022', '2023', 'https://lectrium.io'],
+  ['C2 Ventures', 'Research Intern', 'Remote', '2022', '2023', 'https://www.c2ventures.co/'],
+];
+
+const Experience = () => (
+  <section className="work-section" id="work">
+    <div className="section-heading">
+      <p>Selected experience</p>
+      <h2>Places I&apos;ve made<br />an <em>impact.</em></h2>
+      <span>Engineering, design systems, creative development, and zero-to-one product work.</span>
     </div>
-  );
-};
+    <div className="work-list">
+      {roles.map(([company, position, location, yearFrom, yearTo, link], index) => (
+        <ExperienceLink key={company} {...{ company, position, location, yearFrom, yearTo, link, index }} />
+      ))}
+    </div>
+  </section>
+);
 
 export default Experience;

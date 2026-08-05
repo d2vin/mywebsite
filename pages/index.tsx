@@ -8,14 +8,13 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Devin Minnihan — Software Engineer & Designer</title>
+        <meta name="description" content="The portfolio of Devin Minnihan, a software engineer and designer in New York." />
       </Head>
-      <div className="h-screen mb-40">
-        <Layout>
-          <Masthead />
-          <Works />
-        </Layout>
-      </div>
+      <Layout>
+        <Masthead />
+        <Works />
+      </Layout>
     </>
   );
 };
