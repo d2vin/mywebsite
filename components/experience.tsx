@@ -3,6 +3,7 @@ import ExperienceLink from './experience-link';
 const roles = [
   ['Letterhead', 'Software Engineer', 'New York', '2022', 'Present', 'https://www.tryletterhead.com/'],
   ['Anakin Clothing', 'Software Engineer', 'New York', '2019', 'Present', 'https://anakin.clothing'],
+  ['Bedlam', 'Contract Software Engineer', 'New York', '2025', 'Present', 'https://bedlamtokyo-c9b429e60a74fa729d53.o2.myshopify.dev/product-wall'],
   ['Baek Industries', 'Contract Software Engineer', 'New York', '2025', 'Present', 'https://baekindustries.com/'],
   ['Maximal Asset Management', 'Contract Software Engineer', 'New York', '2024', 'Present', 'https://www.maximalam.com/'],
   ['Reign Ventures', 'Contract Software Engineer', 'New York', '2024', 'Present', 'https://www.reignvc.com/'],
