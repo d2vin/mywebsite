@@ -1,0 +1,15 @@
+---
+title: 'Connecting Nuxt Interfaces to Laravel APIs at Letterhead'
+date: '2023-11-09'
+link: 'https://letterhead.ai'
+inspo: 'false'
+ref: 'https://letterhead.ai'
+---
+
+My work at Letterhead expanded from frontend implementation into the connection between the Nuxt application and its Laravel backend. Building API endpoints made me think about a feature as a complete path: a user takes an action, the client validates and submits it, the server applies business rules, and the interface communicates the result.
+
+That path taught me that API design is part of the user experience. Consistent request shapes and useful error responses make frontend states easier to reason about. On the client, loading, success, empty, and failure states all deserve deliberate treatment. On the server, validation protects both the database and the assumptions the interface depends on.
+
+Working across TypeScript and PHP also sharpened my understanding of boundaries. Types are valuable inside the Nuxt application, but an HTTP response is still external data that needs to be handled carefully. Laravel's structure helped keep validation and backend behavior explicit, while Nuxt provided the organization needed to turn that data into a responsive interface.
+
+Following features across the stack made debugging more systematic. Instead of treating a visual symptom as an isolated frontend issue, I learned to trace the request, inspect the response, and locate where reality first diverged from the expected flow.

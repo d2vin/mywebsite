@@ -1,0 +1,15 @@
+---
+title: 'What Queues, Jobs, and Batches Taught Me About Reliable Software'
+date: '2024-06-21'
+link: 'https://letterhead.ai'
+inspo: 'false'
+ref: 'https://letterhead.ai'
+---
+
+At Letterhead, I gained experience moving expensive work out of the request-response cycle with Laravel queues, jobs, and batches. Newsletter software can involve operations that touch many records, and making a user wait for all of that work to finish in a browser request creates a fragile experience.
+
+A queued job changes the shape of the problem. The application can acknowledge an action promptly, then perform the heavier work in the background. Batches help organize larger operations into smaller units that can be tracked as a group. This approach improves responsiveness, but it also introduces important questions: Can a job safely run twice? What happens after a partial failure? How does the product communicate progress?
+
+Those questions taught me to design background work for retryability and visibility. Inputs should be explicit, failures should leave enough context to investigate, and repeated execution should not corrupt data or create surprising outcomes. Breaking work into smaller jobs also makes failures easier to isolate than one large, opaque process.
+
+The experience gave me a more practical definition of reliability. It is not the assumption that every operation will succeed on its first attempt. It is designing the system so that delays and failures are expected, observable, and recoverable.

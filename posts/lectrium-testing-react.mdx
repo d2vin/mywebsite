@@ -1,0 +1,15 @@
+---
+title: 'Using Unit Tests to Change React Interfaces with Confidence'
+date: '2022-07-19'
+link: 'https://lectrium.com'
+inspo: 'false'
+ref: 'https://lectrium.com'
+---
+
+Running unit tests while developing React components at Lectrium showed me how testing supports everyday frontend work. Tests were not separate from implementation; they documented expected behavior and provided fast feedback when a change affected something outside the part of the interface I was looking at.
+
+I learned to focus tests on behavior a user or another component could observe. That meant checking meaningful output and interactions instead of tying every assertion to internal implementation details. Tests written at that level were more useful during refactoring because they protected the contract of a component while leaving room to improve how it worked internally.
+
+Testing also improved the way I broke down problems. Components with clear inputs, outputs, and responsibilities were easier to test. When a test required an elaborate setup, it often revealed that too many concerns had accumulated in one place.
+
+The most important lesson was that a test suite creates leverage. It cannot replace thoughtful review or manual exploration, but it can turn a risky edit into a measured change and give a team more confidence to keep improving a product.

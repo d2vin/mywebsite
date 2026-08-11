@@ -1,0 +1,15 @@
+---
+title: 'Designing Data Flows with Laravel and MySQL'
+date: '2025-02-13'
+link: 'https://letterhead.ai'
+inspo: 'false'
+ref: 'https://letterhead.ai'
+---
+
+Building API endpoints at Letterhead gave me hands-on experience with the decisions between a request and a MySQL database. Even when a feature looks simple in the interface, its data flow may need to validate input, preserve relationships, return useful errors, and remain efficient as the amount of data grows.
+
+Laravel made the common path expressive, but it did not remove the need to understand the queries underneath it. I learned to pay attention to which records a screen actually needed, when related data was being loaded, and how repeated database access could turn into unnecessary work. Returning a focused response often made both the endpoint and its consuming Vue components easier to understand.
+
+I also became more conscious of where rules belong. Client-side checks can make an interface feel immediate, but server-side validation remains the authoritative boundary. Database constraints and deliberate update flows provide another layer of protection for the data itself.
+
+This work connected product behavior to data modeling in a concrete way. Good data handling is not only about speed; it is about making invalid states difficult to create and making the intended path easy for future engineers to follow.

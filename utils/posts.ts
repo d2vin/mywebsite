@@ -58,7 +58,6 @@ export function getSortedPostsData() {
       return 0;
     }
   });
-  console.log(posts);
   return allPostsData.sort(({ date: a }, { date: b }) => {
     if (a < b) {
       return 1;
