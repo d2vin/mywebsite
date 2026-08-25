@@ -3,8 +3,10 @@ import Head from 'next/head';
 import Masthead from '../components/masthead';
 import Layout from '../components/layout';
 import Works from '../components/experience';
+import GithubActivity from '../components/github-activity';
+import { getGithubActivity, type GithubActivity as GithubActivityData } from '../lib/github';
 
-const Home: NextPage = () => {
+const Home: NextPage<{ githubActivity: GithubActivityData | null }> = ({ githubActivity }) => {
   return (
     <>
       <Head>
@@ -13,6 +15,7 @@ const Home: NextPage = () => {
       </Head>
       <Layout>
         <Masthead />
+        <GithubActivity activity={githubActivity} />
         <Works />
       </Layout>
     </>
@@ -20,3 +23,10 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  return {
+    props: { githubActivity: await getGithubActivity() },
+    revalidate: 3600,
+  };
+}
