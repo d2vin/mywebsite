@@ -7,7 +7,7 @@ const roles = [
   ['C2 Ventures', 'Research Intern', 'Remote', '2022', '2023', 'https://www.c2ventures.co/'],
   ['Maximal Asset Management', 'Contract Software Engineer', 'New York', '2024', 'Present', 'https://www.maximalam.com/'],
   ['Teleportium', 'Contract Software Engineer', 'New York', '2023', 'Present', 'https://www.teleportium.us/'],
-  ['Anakin Clothing', 'Software Engineer', 'New York', '2019', 'Present', 'https://anakin.clothing'],
+  ['Anakin Clothing', 'Contract Software Engineer', 'New York', '2019', 'Present', 'https://anakin.clothing'],
   ['Bedlam', 'Contract Software Engineer', 'New York', '2025', 'Present', 'https://bedlamtokyo-c9b429e60a74fa729d53.o2.myshopify.dev/product-wall'],
   ['Digital Gallery', 'Freelance Software Engineer', 'New York', '2024', 'Present', 'https://kaito-mu.vercel.app/'],
   ['Baek Industries', 'Contract Software Engineer', 'New York', '2025', 'Present', 'https://baekindustries.com/'],
