@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 import { createDataPixelArcRenderer, DATA_PIXEL_ARC_DEFAULTS, type DataPixelArcOptions } from '../lib/dataPixelArcRenderer';
 
 type DataPixelArcProps = Partial<DataPixelArcOptions> & { className?: string };
 
 export function DataPixelArc({ className = '', ...props }: DataPixelArcProps) {
+  const { resolvedTheme } = useTheme();
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const optionsRef = useRef({ ...DATA_PIXEL_ARC_DEFAULTS, ...props });
@@ -47,7 +49,9 @@ export function DataPixelArc({ className = '', ...props }: DataPixelArcProps) {
       intersection.disconnect();
       document.removeEventListener('visibilitychange', visibility);
     };
-  }, []);
+  }, [resolvedTheme]);
+
+  if (resolvedTheme !== 'dark') return null;
 
   return (
     <div
