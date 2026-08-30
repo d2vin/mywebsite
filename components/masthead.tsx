@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowDown, ArrowUpRight, Sparkles } from 'lucide-react';
+import { DataPixelArc } from './data-pixel-arc';
 
 const Masthead = () => (
   <section className="hero">
+    <DataPixelArc className="hero-bg-canvas" />
     <div className="hero-copy">
       <div className="availability"><span /><Sparkles size={13} /> Available for select projects</div>
       <h1>I build digital<br />things with <em>feeling.</em></h1>
