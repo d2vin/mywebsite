@@ -114,8 +114,8 @@ button, input, textarea { font: inherit; }
 .orbit-one { width: 48px; height: 48px; top: 8%; right: -7%; animation: float 5s ease-in-out infinite; }
 .orbit-two { width: 14px; height: 14px; background: var(--cyan); border: 0; left: -4%; bottom: 22%; box-shadow: 0 0 24px rgba(126,231,220,.7); animation: float 4s ease-in-out -2s infinite; }
 
-.work-section { padding: 120px 4vw 140px; }
-.github-section { padding: 118px 4vw 126px; border-bottom: 1px solid var(--line); }
+.work-section { padding: 120px 4vw 140px; background: var(--ink); }
+.github-section { padding: 118px 4vw 126px; border-bottom: 1px solid var(--line); background: var(--ink); }
 .github-heading { display: grid; grid-template-columns: 1.2fr .75fr auto; gap: 4vw; align-items: end; margin-bottom: 54px; }
 .github-kicker { display: flex; align-items: center; gap: 9px; margin: 0 0 20px; color: var(--cyan); font: 400 10px 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .13em; }
 .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #6ef0a8; box-shadow: 0 0 11px #6ef0a8; animation: pulse 2.2s ease-in-out infinite; }
