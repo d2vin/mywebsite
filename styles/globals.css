@@ -180,6 +180,11 @@ button, input, textarea { font: inherit; }
 .aero .work-row:hover { background: linear-gradient(90deg, rgba(255,255,255,.58), rgba(54,203,102,.12)); border-color: rgba(0,145,76,.32); }
 .work-arrow { justify-self: end; width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); transform: rotate(0); transition: transform .35s, color .35s, background .35s; }
 .work-row:hover .work-arrow { transform: rotate(45deg); color: var(--ink); background: var(--cyan); }
+.work-row--multi { position: relative; padding-block: 16px; }
+.work-row--multi:hover { padding: 16px 14px; }
+.work-main-link::after { content: ''; position: absolute; inset: 0; }
+.work-web a { position: relative; z-index: 1; color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.work-web a:hover { color: var(--cyan); }
 
 .page-section { padding: 92px 4vw 140px; min-height: 70vh; }
 .page-eyebrow { color: var(--cyan); font: 400 10px 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .13em; }

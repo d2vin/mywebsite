@@ -1,6 +1,7 @@
 import ExperienceLink from './experience-link';
 
-const roles = [
+const roles: string[][] = [
+  ['OpenVote', 'iOS App — Congress Made Clear', 'New York', '2022', 'Present', 'https://apps.apple.com/us/app/openvote-congress-made-clear/id6782198877', 'https://openvote.dev/votes'],
   ['Letterhead', 'Software Engineer', 'New York', '2022', 'Present', 'https://www.tryletterhead.com/'],
   ['Lectrium', 'Frontend Software Developer', 'New York', '2022', '2023', 'https://lectrium.io'],
   ['Reign Ventures', 'Contract Software Engineer', 'New York', '2024', 'Present', 'https://www.reignvc.com/'],
@@ -12,7 +13,6 @@ const roles = [
   ['Bedlam', 'Contract Software Engineer', 'New York', '2025', 'Present', 'https://bedlamtokyo-c9b429e60a74fa729d53.o2.myshopify.dev/product-wall'],
   ['Digital Gallery', 'Freelance Software Engineer', 'New York', '2024', 'Present', 'https://kaito-mu.vercel.app/'],
   ['Baek Industries', 'Contract Software Engineer', 'New York', '2025', 'Present', 'https://baekindustries.com/'],
-  ['Productive', 'Thesis Project', 'New York', '2022', 'Present', 'https://productive-d2vins-projects.vercel.app/'],
 ];
 
 const Experience = () => (
@@ -23,8 +23,8 @@ const Experience = () => (
       <span>Engineering, design systems, creative development, and zero-to-one product work.</span>
     </div>
     <div className="work-list">
-      {roles.map(([company, position, location, yearFrom, yearTo, link], index) => (
-        <ExperienceLink key={company} {...{ company, position, location, yearFrom, yearTo, link, index }} />
+      {roles.map(([company, position, location, yearFrom, yearTo, link, webLink], index) => (
+        <ExperienceLink key={company} {...{ company, position, location, yearFrom, yearTo, link, webLink, index }} />
       ))}
     </div>
   </section>
