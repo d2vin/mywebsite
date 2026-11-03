@@ -2,7 +2,7 @@ import ExperienceLink from './experience-link';
 
 const roles: string[][] = [
   ['OpenVote', 'iOS App — Congress Made Clear', 'New York', '2022', 'Present', 'https://apps.apple.com/us/app/openvote-congress-made-clear/id6782198877', 'https://openvote.dev/votes'],
-  ['Letterhead', 'Software Engineer', 'New York', '2022', 'Present', 'https://www.tryletterhead.com/'],
+  ['Letterhead', 'Software Engineer', 'New York', '2022', 'Present', 'https://www.tryletterhead.com/', '', 'Sign up today to grow your newsletter'],
   ['Lectrium', 'Frontend Software Developer', 'New York', '2022', '2023', 'https://lectrium.io'],
   ['Reign Ventures', 'Contract Software Engineer', 'New York', '2024', 'Present', 'https://www.reignvc.com/'],
   ['C2 Ventures', 'Research Intern', 'Remote', '2022', '2023', 'https://www.c2ventures.co/'],
@@ -23,8 +23,8 @@ const Experience = () => (
       <span>Engineering, design systems, creative development, and zero-to-one product work.</span>
     </div>
     <div className="work-list">
-      {roles.map(([company, position, location, yearFrom, yearTo, link, webLink], index) => (
-        <ExperienceLink key={company} {...{ company, position, location, yearFrom, yearTo, link, webLink, index }} />
+      {roles.map(([company, position, location, yearFrom, yearTo, link, webLink, note], index) => (
+        <ExperienceLink key={company} {...{ company, position, location, yearFrom, yearTo, link, webLink: webLink || undefined, note, index }} />
       ))}
     </div>
   </section>
